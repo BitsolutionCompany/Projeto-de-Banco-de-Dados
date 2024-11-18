@@ -17,7 +17,7 @@ def create_connection(host, user, password, database=None):
             host = host,
             user = user,
             password = password,
-        database=database
+            database = database
         )
         if connection.is_connected():
             print("Successfully connected to the database")
