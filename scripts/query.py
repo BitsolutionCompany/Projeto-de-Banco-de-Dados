@@ -38,7 +38,7 @@ def createTable(db, table, colunas):
         mycursor = conn.cursor()
         try:
             colunas_str = ", ".join(colunas)
-            mycursor.execute(f"CREATE TABLE {table} ({colunas_str})")
+            mycursor.execute(f"CREATE TABLE {table} ({colunas_str})engine=InnoDB")
             return f"Tabela {table} Criada"
         except mysql.connector.Error as err:
             return f"Erro ao criar tabela: {err}"
@@ -97,3 +97,17 @@ def insertDados(db, table, columns, dados):
             conn.close()
     else:
         return "Não Conectado!"
+
+def dropDB(db):
+    conn = create_connection("localhost", "root", "")
+    if conn is not None and conn.is_connected():
+        mycursor = conn.cursor()
+        try:
+            mycursor.execute(f"DROP DATABASE {db}")
+            conn.commit()
+            return "Banco de Dados Excluído"
+        except mysql.connector.Error as err:
+            return f"Erro ao excluir Banco de Dados: {err}"
+        finally:
+            mycursor.close()
+            conn.close()
