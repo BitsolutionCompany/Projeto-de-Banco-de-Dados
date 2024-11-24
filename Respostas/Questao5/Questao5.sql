@@ -1,0 +1,1 @@
+SELECT A.nomeALuno, T.nomeTurma FROM ALUNOS A INNER JOIN NOTAS N ON A.codAluno = N.codAluno INNER JOIN TURMAS T on N.codAluno = T.codAluno;

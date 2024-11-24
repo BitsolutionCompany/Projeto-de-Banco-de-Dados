@@ -123,7 +123,6 @@ while True:
             print("-ADD")
             print("-MODIFY")
             print("-DROP")
-            print("-CONSTRANT")
 
             acao = input("Informe a ação desejada: ")
         elif escolha == '0':
